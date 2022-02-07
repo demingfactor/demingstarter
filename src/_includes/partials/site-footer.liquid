@@ -5,8 +5,13 @@
             {% for section in nav %}
                 <div class="flex flex-col">
                     <h3 class="font-bold">{{ section.title }}</h3>
-                    {% for links in section.links %}
-                        <a href="{{ links.url }}">{{ links.text }}</a>
+                    {% for link in section.links %}
+                    <div class="flex items-center gap-1">
+                        {% if link.icon != "" and link.icon %}
+                            <img width="{{ section.icon-height }}" height="{{ section.icon-height }}" src="{{ link.icon }}">
+                        {% endif %}
+                        <a href="{{ link.url }}">{{ link.text }}</a>
+                    </div>
                     {% endfor %}
                 </div>
             {% endfor %}
